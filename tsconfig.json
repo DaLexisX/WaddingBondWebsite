@@ -29,15 +29,16 @@
       "@/*": [
         "./src/*"
       ]
-    },
+    }
   },
   "include": [
-    "next-env.d.ts",
-    "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "next.config.mjs"
+    "env.d.ts",
+    "next-env.d.ts",
+    "next.config.mjs",
+    "out/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

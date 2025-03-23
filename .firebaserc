@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "wadding-bond-site"
-  }
-} 
+    "default": "wadding-bond-site",
+    "production": "wadding-bond"
+  },
+  "targets": {
+    "wadding-bond-site": {
+      "hosting": {
+        "wadding-bond": [
+          "wadding-bond"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

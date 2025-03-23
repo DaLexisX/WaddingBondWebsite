@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -17,10 +18,14 @@ export default function Home() {
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
-              {/* Placeholder for profile image */}
-              <div className="w-64 h-64 bg-gray-300 rounded-full flex items-center justify-center">
-                <span className="text-gray-600">Profile Image</span>
-              </div>
+              <Image 
+                src="/profile.jpg" 
+                alt="Doug Wadding-Bond" 
+                width={256} 
+                height={256} 
+                className="rounded-full object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -36,10 +41,31 @@ export default function Home() {
             <div className="flex flex-col md:flex-row">
               <div className="md:w-1/2">
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">CAFE:CONNECT</h3>
+                  <div className="mb-4 flex justify-center">
+                    <div className="mb-4">
+                      <Image 
+                        src="/images/projects/cafe-connect/cafe_connect_logo_black.png" 
+                        alt="CAFE:CONNECT Logo" 
+                        width={280} 
+                        height={280} 
+                        className="mx-auto mb-4"
+                      />
+                    </div>
+                  </div>
                   <p className="text-gray-600 mb-6">
-                    CAFE:CONNECT is a digital loyalty app connecting coffee lovers with independent cafés through a seamless rewards system.
+                    CAFE:CONNECT is a digital loyalty app connecting coffee lovers with independent cafés through a seamless rewards system. 
+                    Developed for the Independent Cafe Owner's Network (ICON) based in Worthing, Sussex, UK, this Flutter-powered app 
+                    revolutionizes loyalty programs with NFC-enabled stamp cards, detailed café discovery features, and robust user profiles.
                   </p>
+                  <div className="mb-6">
+                    <h4 className="font-semibold mb-2">Key Features:</h4>
+                    <ul className="list-disc pl-5 text-gray-600 text-sm space-y-1 mb-2">
+                      <li>NFC tap-to-earn digital stamp cards with confetti animations</li>
+                      <li>Interactive café finder with location services and distance calculation</li>
+                      <li>Comprehensive café profiles with menus, hours and social links</li>
+                      <li>Secure authentication with email, Google and Apple sign-in</li>
+                    </ul>
+                  </div>
                   <div className="mb-6">
                     <h4 className="font-semibold mb-2">Technologies Used:</h4>
                     <div className="flex flex-wrap gap-2">
@@ -49,32 +75,54 @@ export default function Home() {
                       <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Location Services</span>
                     </div>
                   </div>
-                  <div className="flex space-x-4">
-                    <a href="https://apps.apple.com/ph/app/cafe-connect/id6742357756" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-2 rounded-lg flex items-center">
-                      <span>App Store</span>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <a href="https://apps.apple.com/ph/app/cafe-connect/id6742357756" target="_blank" rel="noopener noreferrer" className="flex h-10">
+                      <img 
+                        src="/images/projects/cafe-connect/badges/app-store-black.png" 
+                        alt="Download on the App Store" 
+                        className="h-10 w-auto dark:hidden"
+                      />
+                      <img 
+                        src="/images/projects/cafe-connect/badges/app-store-white.png" 
+                        alt="Download on the App Store" 
+                        className="h-10 w-auto hidden dark:block"
+                      />
                     </a>
-                    <a href="#" className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center">
-                      <span>Google Play</span>
+                    <a href="#" className="flex h-10">
+                      <img 
+                        src="/images/projects/cafe-connect/badges/google-play.png" 
+                        alt="Get it on Google Play" 
+                        className="h-10 w-auto"
+                      />
                     </a>
-                    <a href="/projects/cafe-connect" className="text-blue-600 px-4 py-2 flex items-center">
-                      <span>Learn More</span>
-                    </a>
+                    <div className="mb-6">
+                      <Link href="/projects/cafe-connect" className="inline-flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition duration-300">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="md:w-1/2 bg-gray-200 flex items-center justify-center p-8">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                    <span className="text-gray-600">App Screenshot 1</span>
+                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                    <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot1.webp')" }}></span>
+                    <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark1.webp')" }}></span>
                   </div>
-                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                    <span className="text-gray-600">App Screenshot 2</span>
+                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                    <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot2.webp')" }}></span>
+                    <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark2.webp')" }}></span>
                   </div>
-                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                    <span className="text-gray-600">App Screenshot 3</span>
+                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                    <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot3.webp')" }}></span>
+                    <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark3.webp')" }}></span>
                   </div>
-                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                    <span className="text-gray-600">App Screenshot 4</span>
+                  <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                    <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot4.webp')" }}></span>
+                    <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark4.webp')" }}></span>
                   </div>
                 </div>
               </div>

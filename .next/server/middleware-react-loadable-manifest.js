@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST='{"..\\\\node_modules\\\\.pnpm\\\\next@15.1.4_@opentelemetry+_a8b00cae3770b22ebc035673dd441065\\\\node_modules\\\\next\\\\dist\\\\client\\\\index.js -> ../pages/_app":{"id":327,"files":["static/chunks/327.a91111f13cea1f52.js"]},"..\\\\node_modules\\\\.pnpm\\\\next@15.1.4_@opentelemetry+_a8b00cae3770b22ebc035673dd441065\\\\node_modules\\\\next\\\\dist\\\\client\\\\index.js -> ../pages/_error":{"id":1294,"files":["static/chunks/294.05e274169dbf5558.js"]}}';

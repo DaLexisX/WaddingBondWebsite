@@ -26,19 +26,47 @@ export default function Projects() {
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-1/2">
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold mb-4">CAFE:CONNECT</h3>
+                      <div className="mb-4 flex justify-center">
+                        <img 
+                          src="/images/projects/cafe-connect/cafe_connect_logo_black.png" 
+                          alt="CAFE:CONNECT" 
+                          className="h-16 w-auto dark:hidden"
+                        />
+                        <div className="hidden dark:block text-center">
+                          <h3 className="text-2xl font-bold">CAFE:CONNECT</h3>
+                        </div>
+                      </div>
                       <p className="text-gray-600 mb-6">
                         A digital loyalty app connecting coffee lovers with independent cafés through a seamless rewards system.
-                        The app helps local cafés compete with large chains by offering a unified loyalty platform.
+                        The official digital loyalty app from the Independent Cafe Owners Network (ICON) helps local cafés compete with large chains by offering a unified loyalty platform.
                       </p>
+                      <div className="mb-6">
+                        <h4 className="font-semibold mb-2">Project Overview:</h4>
+                        <p className="text-gray-600 mb-4">
+                          CAFE:CONNECT is a comprehensive mobile application developed for ICON's flagship location, Iconic Coffee, and its network of independent cafés across the UK. This full-stack Flutter application enhances the café experience with paperless loyalty cards and detailed café discovery features.
+                        </p>
+                      </div>
                       <div className="mb-6">
                         <h4 className="font-semibold mb-2">Key Features:</h4>
                         <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                          <li>Digital loyalty cards for multiple cafés</li>
-                          <li>NFC tap-to-earn functionality</li>
-                          <li>Café discovery with location services</li>
-                          <li>Personalized rewards and offers</li>
-                          <li>Cross-platform compatibility (iOS & Android)</li>
+                          <li><span className="font-medium">Digital Loyalty Program</span> - NFC-enabled stamp cards with real-time tracking and engaging animations</li>
+                          <li><span className="font-medium">Location Discovery</span> - Find nearby cafés with comprehensive details (contact info, hours, social links)</li>
+                          <li><span className="font-medium">User Account Management</span> - Secure authentication via email, Google Sign-In, and Sign in with Apple</li>
+                          <li><span className="font-medium">Admin Features</span> - Tools for café owners to manage locations, franchises, and send notifications</li>
+                          <li><span className="font-medium">Personalization</span> - Custom settings with light/dark themes and user preferences</li>
+                          <li><span className="font-medium">Eco-friendly</span> - Eliminates paper punch cards, supporting sustainability efforts</li>
+                        </ul>
+                      </div>
+                      <div className="mb-6">
+                        <h4 className="font-semibold mb-2">Technical Highlights:</h4>
+                        <ul className="list-disc pl-5 space-y-1 text-gray-600 text-sm">
+                          <li>Cross-platform development with Flutter for iOS and Android</li>
+                          <li>Firebase backend (Authentication, Firestore, Storage)</li>
+                          <li>NFC integration for seamless stamp collection</li>
+                          <li>Local data persistence with shared_preferences and SQLite</li>
+                          <li>Reactive programming with provider and rxdart</li>
+                          <li>Location services with distance calculation (Haversine formula)</li>
+                          <li>Deep linking and external app integration</li>
                         </ul>
                       </div>
                       <div className="mb-6">
@@ -51,29 +79,49 @@ export default function Projects() {
                           <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Cloud Functions</span>
                         </div>
                       </div>
-                      <div className="flex space-x-4">
-                        <a href="https://apps.apple.com/ph/app/cafe-connect/id6742357756" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-2 rounded-lg flex items-center">
-                          <span>App Store</span>
+                      <div className="flex flex-wrap gap-4 items-center">
+                        <a href="https://apps.apple.com/ph/app/cafe-connect/id6742357756" target="_blank" rel="noopener noreferrer" className="flex h-10">
+                          <img 
+                            src="/images/projects/cafe-connect/badges/app-store-black.png" 
+                            alt="Download on the App Store" 
+                            className="h-10 w-auto dark:hidden"
+                          />
+                          <img 
+                            src="/images/projects/cafe-connect/badges/app-store-white.png" 
+                            alt="Download on the App Store" 
+                            className="h-10 w-auto hidden dark:block"
+                          />
                         </a>
-                        <a href="#" className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center">
-                          <span>Google Play</span>
+                        <a href="#" className="flex h-10">
+                          <img 
+                            src="/images/projects/cafe-connect/badges/google-play.png" 
+                            alt="Get it on Google Play" 
+                            className="h-10 w-auto"
+                          />
+                        </a>
+                        <a href="/projects/cafe-connect" className="ml-4 inline-flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition duration-300">
+                          View Project Details
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="md:w-1/2 bg-gray-200 flex items-center justify-center p-8">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                        <span className="text-gray-600">App Screenshot 1</span>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot1.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark1.webp')" }}></span>
                       </div>
-                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                        <span className="text-gray-600">App Screenshot 2</span>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot2.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark2.webp')" }}></span>
                       </div>
-                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                        <span className="text-gray-600">App Screenshot 3</span>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot3.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark3.webp')" }}></span>
                       </div>
-                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center">
-                        <span className="text-gray-600">App Screenshot 4</span>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot4.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark4.webp')" }}></span>
                       </div>
                     </div>
                   </div>
