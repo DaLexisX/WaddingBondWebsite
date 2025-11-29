@@ -6,7 +6,7 @@ export default function CafeConnectProject() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-20">
+      <section className="bg-gradient-to-r from-orange-500 to-red-600 text-white pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center">
             <div className="mb-6 flex flex-col items-center">
@@ -58,10 +58,10 @@ export default function CafeConnectProject() {
                     className="h-12 w-auto hidden dark:block"
                   />
                 </a>
-                <a href="#" className="flex h-12">
-                  <img 
-                    src="/images/projects/cafe-connect/badges/google-play.png" 
-                    alt="Get it on Google Play" 
+                <a href="https://play.google.com/store/apps/details?id=com.independentcafeownersnetwork.iconrewards" target="_blank" rel="noopener noreferrer" className="flex h-12">
+                  <img
+                    src="/images/projects/cafe-connect/badges/google-play.png"
+                    alt="Get it on Google Play"
                     className="h-12 w-auto"
                   />
                 </a>

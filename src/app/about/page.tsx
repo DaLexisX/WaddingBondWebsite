@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* About Hero Section */}
-      <section className="bg-gray-900 text-white py-20">
+      <section className="bg-gray-900 text-white pt-32 pb-20">
         <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
           <p className="text-xl max-w-3xl">
