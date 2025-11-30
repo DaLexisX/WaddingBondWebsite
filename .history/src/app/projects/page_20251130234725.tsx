@@ -1,91 +1,4 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-
-// Video component for project cards
-function ProjectVideo({ videoBase }: { videoBase: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Adaptive bitrate selection based on connection speed
-    const selectOptimalSource = async () => {
-      try {
-        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
-        
-        if (connection) {
-          const effectiveType = connection.effectiveType;
-          const downlink = connection.downlink;
-          
-          if (downlink >= 2 || effectiveType === '4g') {
-            video.src = `/videos/homepage/${videoBase}_high.mp4`;
-          } else if (downlink >= 1 || effectiveType === '3g') {
-            video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-          } else {
-            video.src = `/videos/homepage/${videoBase}_low.mp4`;
-          }
-        } else {
-          video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-        }
-        
-        video.load();
-      } catch (error) {
-        if (video) {
-          video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-          video.load();
-        }
-      }
-    };
-
-    selectOptimalSource();
-
-    // Intersection Observer for autoplay when video comes into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && video) {
-            video.play().catch((error) => {
-              console.log('Autoplay prevented:', error);
-            });
-          } else if (video) {
-            video.pause();
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    if (video) {
-      observer.observe(video);
-    }
-
-    return () => {
-      if (video) {
-        observer.unobserve(video);
-      }
-    };
-  }, [videoBase]);
-
-  return (
-    <div className="w-full h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        loop
-        muted
-        playsInline
-        preload="metadata"
-      >
-        <source src={`/videos/homepage/${videoBase}_medium.mp4`} type="video/mp4" />
-        <source src={`/videos/homepage/${videoBase}_low.mp4`} type="video/mp4" />
-      </video>
-    </div>
-  );
-}
+import React from 'react';
 
 export default function Projects() {
   return (
@@ -222,8 +135,12 @@ export default function Projects() {
                 {/* Karaoke Name Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="karaoke_name_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <img 
+                        src="/images/karaoke_name_logo_300w.png"
+                        alt="Karaoke Name Logo"
+                        className="w-full h-auto max-h-48 object-contain"
+                      />
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">Karaoke Name</h3>
@@ -246,8 +163,12 @@ export default function Projects() {
                 {/* Est85 Coffee Works Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="est85_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <img 
+                        src="/images/est85_coffee_works_transparent_cropped_380w.png"
+                        alt="Est85 Coffee Works Logo"
+                        className="w-full h-auto max-h-48 object-contain"
+                      />
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">Est85 Coffee Works</h3>
@@ -270,8 +191,12 @@ export default function Projects() {
                 {/* CAFE:CONNECT Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="cafe_connect_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <img 
+                        src="/images/projects/cafe-connect/cafe_connect_logo_black.png"
+                        alt="CAFE:CONNECT Logo"
+                        className="w-full h-auto max-h-48 object-contain dark:invert"
+                      />
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">CAFE:CONNECT</h3>

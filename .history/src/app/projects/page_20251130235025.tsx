@@ -246,8 +246,12 @@ export default function Projects() {
                 {/* Est85 Coffee Works Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="est85_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <img 
+                        src="/images/est85_coffee_works_transparent_cropped_380w.png"
+                        alt="Est85 Coffee Works Logo"
+                        className="w-full h-auto max-h-48 object-contain"
+                      />
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">Est85 Coffee Works</h3>
@@ -270,8 +274,12 @@ export default function Projects() {
                 {/* CAFE:CONNECT Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="cafe_connect_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <img 
+                        src="/images/projects/cafe-connect/cafe_connect_logo_black.png"
+                        alt="CAFE:CONNECT Logo"
+                        className="w-full h-auto max-h-48 object-contain dark:invert"
+                      />
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">CAFE:CONNECT</h3>

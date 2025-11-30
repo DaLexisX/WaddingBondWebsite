@@ -1,91 +1,4 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-
-// Video component for project cards
-function ProjectVideo({ videoBase }: { videoBase: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Adaptive bitrate selection based on connection speed
-    const selectOptimalSource = async () => {
-      try {
-        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
-        
-        if (connection) {
-          const effectiveType = connection.effectiveType;
-          const downlink = connection.downlink;
-          
-          if (downlink >= 2 || effectiveType === '4g') {
-            video.src = `/videos/homepage/${videoBase}_high.mp4`;
-          } else if (downlink >= 1 || effectiveType === '3g') {
-            video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-          } else {
-            video.src = `/videos/homepage/${videoBase}_low.mp4`;
-          }
-        } else {
-          video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-        }
-        
-        video.load();
-      } catch (error) {
-        if (video) {
-          video.src = `/videos/homepage/${videoBase}_medium.mp4`;
-          video.load();
-        }
-      }
-    };
-
-    selectOptimalSource();
-
-    // Intersection Observer for autoplay when video comes into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && video) {
-            video.play().catch((error) => {
-              console.log('Autoplay prevented:', error);
-            });
-          } else if (video) {
-            video.pause();
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    if (video) {
-      observer.observe(video);
-    }
-
-    return () => {
-      if (video) {
-        observer.unobserve(video);
-      }
-    };
-  }, [videoBase]);
-
-  return (
-    <div className="w-full h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        loop
-        muted
-        playsInline
-        preload="metadata"
-      >
-        <source src={`/videos/homepage/${videoBase}_medium.mp4`} type="video/mp4" />
-        <source src={`/videos/homepage/${videoBase}_low.mp4`} type="video/mp4" />
-      </video>
-    </div>
-  );
-}
+import React from 'react';
 
 export default function Projects() {
   return (
@@ -193,14 +106,25 @@ export default function Projects() {
                       </div>
                     </div>
                   </div>
-                  <div className="md:w-1/2 bg-slate-50 dark:bg-slate-900 relative min-h-[500px]">
-                    <iframe 
-                      src="/projects/cafe-connect/embed/index.html" 
-                      className="w-full h-full absolute inset-0 border-0"
-                      title="CAFE:CONNECT Interactive Demo"
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    />
+                  <div className="md:w-1/2 bg-gray-200 flex items-center justify-center p-8">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot1.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark1.webp')" }}></span>
+                      </div>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot2.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark2.webp')" }}></span>
+                      </div>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot3.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark3.webp')" }}></span>
+                      </div>
+                      <div className="bg-gray-300 rounded-lg h-48 flex items-center justify-center relative overflow-hidden shadow-md">
+                        <span className="absolute inset-0 bg-cover bg-center dark:hidden" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot4.webp')" }}></span>
+                        <span className="absolute inset-0 bg-cover bg-center hidden dark:block" style={{ backgroundImage: "url('/images/projects/cafe-connect/screenshot_dark4.webp')" }}></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -222,8 +146,10 @@ export default function Projects() {
                 {/* Karaoke Name Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="karaoke_name_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg w-full h-48 flex items-center justify-center text-white text-2xl font-bold">
+                        KN
+                      </div>
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">Karaoke Name</h3>
@@ -246,8 +172,10 @@ export default function Projects() {
                 {/* Est85 Coffee Works Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="est85_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <div className="bg-gradient-to-br from-amber-800 to-amber-900 rounded-lg w-full h-48 flex items-center justify-center text-white text-2xl font-bold">
+                        E85
+                      </div>
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">Est85 Coffee Works</h3>
@@ -270,8 +198,10 @@ export default function Projects() {
                 {/* CAFE:CONNECT Project */}
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3 p-0">
-                      <ProjectVideo videoBase="cafe_connect_homepage" />
+                    <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
+                      <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-lg w-full h-48 flex items-center justify-center text-white text-2xl font-bold">
+                        CC
+                      </div>
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-bold mb-2">CAFE:CONNECT</h3>
