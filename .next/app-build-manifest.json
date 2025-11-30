@@ -18,6 +18,13 @@
       "static/chunks/591-2c13655facdda44c.js",
       "static/chunks/app/layout-b3119c2afd8ca9af.js"
     ],
+    "/about/page": [
+      "static/chunks/webpack-2ba791c9daa5c2bf.js",
+      "static/chunks/ef62f17a-9e5040a73e604766.js",
+      "static/chunks/435-a6fd8f2fc3fdee42.js",
+      "static/chunks/main-app-92da556ffaeb380f.js",
+      "static/chunks/app/about/page-b75def3c6ddde9f3.js"
+    ],
     "/contact/page": [
       "static/chunks/webpack-2ba791c9daa5c2bf.js",
       "static/chunks/ef62f17a-9e5040a73e604766.js",
@@ -40,6 +47,13 @@
       "static/chunks/960-e79f5a04f5a26706.js",
       "static/chunks/app/projects/cafe-connect/page-80d7042b441f0d6a.js"
     ],
+    "/skills/page": [
+      "static/chunks/webpack-2ba791c9daa5c2bf.js",
+      "static/chunks/ef62f17a-9e5040a73e604766.js",
+      "static/chunks/435-a6fd8f2fc3fdee42.js",
+      "static/chunks/main-app-92da556ffaeb380f.js",
+      "static/chunks/app/skills/page-39887dcff8d57a10.js"
+    ],
     "/page": [
       "static/chunks/webpack-2ba791c9daa5c2bf.js",
       "static/chunks/ef62f17a-9e5040a73e604766.js",
@@ -50,26 +64,12 @@
       "static/chunks/215-1f3f0efedc136716.js",
       "static/chunks/app/page-0290b0740481a034.js"
     ],
-    "/about/page": [
-      "static/chunks/webpack-2ba791c9daa5c2bf.js",
-      "static/chunks/ef62f17a-9e5040a73e604766.js",
-      "static/chunks/435-a6fd8f2fc3fdee42.js",
-      "static/chunks/main-app-92da556ffaeb380f.js",
-      "static/chunks/app/about/page-b75def3c6ddde9f3.js"
-    ],
     "/projects/page": [
       "static/chunks/webpack-2ba791c9daa5c2bf.js",
       "static/chunks/ef62f17a-9e5040a73e604766.js",
       "static/chunks/435-a6fd8f2fc3fdee42.js",
       "static/chunks/main-app-92da556ffaeb380f.js",
       "static/chunks/app/projects/page-a5b20970e77b1669.js"
-    ],
-    "/skills/page": [
-      "static/chunks/webpack-2ba791c9daa5c2bf.js",
-      "static/chunks/ef62f17a-9e5040a73e604766.js",
-      "static/chunks/435-a6fd8f2fc3fdee42.js",
-      "static/chunks/main-app-92da556ffaeb380f.js",
-      "static/chunks/app/skills/page-39887dcff8d57a10.js"
     ]
   }
 }

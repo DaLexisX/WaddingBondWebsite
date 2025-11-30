@@ -86,3 +86,17 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom styles for react-vertical-timeline-component */
+.vertical-timeline-element-content {
+  border-radius: 0.5rem;
+}
+
+.vertical-timeline-element-date {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.vertical-timeline::before {
+  background: #2563eb;
+}

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D Product Showcase</title>
 
+  <!-- Base tag ensures relative paths resolve against the embed directory -->
+  <base href="/projects/cafe-connect/embed/">
+  
   <script type="module" crossorigin src="./assets/index-BU1VL5GY.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DkaWHsCG.css">
 </head>
@@ -352,6 +355,11 @@
 
   <!-- Include the main JavaScript file -->
 
+  <!-- Video test (remove after debugging) -->
+  <video id="test-video" style="display: none;" controls>
+    <source src="./videos/demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- Allow for custom configuration via a global object -->
   <script>
@@ -362,4 +370,4 @@
     window.app.config.ui.visible = false;
   </script>
 </body>
-</html> 
+</html>
