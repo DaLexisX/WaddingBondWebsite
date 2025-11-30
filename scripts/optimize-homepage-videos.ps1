@@ -1,5 +1,5 @@
 # Homepage Video Optimization Script
-# Creates multiple bitrate versions optimized for 320px width display
+# Creates multiple bitrate versions optimized for 640px width display
 # Requires FFmpeg to be installed
 
 $videos = @(
@@ -37,51 +37,51 @@ foreach ($videoName in $videos) {
     
     Write-Host "`nProcessing $videoName..." -ForegroundColor Green
     
-    # High quality (320px) - for good connections
-    Write-Host "Creating high quality version (320px)..." -ForegroundColor Cyan
+    # High quality (640px) - for good connections
+    Write-Host "Creating high quality version (640px)..." -ForegroundColor Cyan
     $outputHigh = Join-Path $outputDir "${baseName}_high.mp4"
     ffmpeg -i $inputVideo `
         -c:v libx264 `
         -preset slow `
         -crf 23 `
-        -maxrate 1.5M `
-        -bufsize 3M `
+        -maxrate 2.5M `
+        -bufsize 5M `
         -c:a aac `
         -b:a 96k `
         -movflags +faststart `
-        -vf "scale=320:-2" `
+        -vf "scale=640:-2" `
         -y `
         $outputHigh
     
-    # Medium quality (320px, lower bitrate) - for average connections
-    Write-Host "Creating medium quality version (320px)..." -ForegroundColor Cyan
+    # Medium quality (640px, lower bitrate) - for average connections
+    Write-Host "Creating medium quality version (640px)..." -ForegroundColor Cyan
     $outputMed = Join-Path $outputDir "${baseName}_medium.mp4"
     ffmpeg -i $inputVideo `
         -c:v libx264 `
         -preset slow `
         -crf 25 `
-        -maxrate 800k `
-        -bufsize 1.6M `
+        -maxrate 1.2M `
+        -bufsize 2.4M `
         -c:a aac `
         -b:a 64k `
         -movflags +faststart `
-        -vf "scale=320:-2" `
+        -vf "scale=640:-2" `
         -y `
         $outputMed
     
-    # Low quality (320px, lowest bitrate) - for slow connections
-    Write-Host "Creating low quality version (320px)..." -ForegroundColor Cyan
+    # Low quality (640px, lowest bitrate) - for slow connections
+    Write-Host "Creating low quality version (640px)..." -ForegroundColor Cyan
     $outputLow = Join-Path $outputDir "${baseName}_low.mp4"
     ffmpeg -i $inputVideo `
         -c:v libx264 `
         -preset slow `
         -crf 27 `
-        -maxrate 400k `
-        -bufsize 800k `
+        -maxrate 600k `
+        -bufsize 1.2M `
         -c:a aac `
         -b:a 48k `
         -movflags +faststart `
-        -vf "scale=320:-2" `
+        -vf "scale=640:-2" `
         -y `
         $outputLow
     

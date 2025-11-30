@@ -5,11 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CafeConnectProject() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const homepageVideoRef = useRef<HTMLVideoElement>(null);
+  const stampVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const homepageVideo = homepageVideoRef.current;
+    if (!homepageVideo) return;
 
     // Adaptive bitrate selection based on connection speed
     const selectOptimalSource = async () => {
@@ -24,26 +25,26 @@ export default function CafeConnectProject() {
           // Select source based on connection speed
           if (downlink >= 5 || effectiveType === '4g') {
             // Fast connection - use 1080p
-            video.src = '/videos/projects/cafe-connect/stamp_mechanism_1080p.mp4';
+            homepageVideo.src = '/videos/projects/cafe-connect/cafe_connect_homepage_1080p.mp4';
           } else if (downlink >= 2.5 || effectiveType === '3g') {
             // Medium connection - use 720p
-            video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+            homepageVideo.src = '/videos/projects/cafe-connect/cafe_connect_homepage_720p.mp4';
           } else {
             // Slow connection - use 480p
-            video.src = '/videos/projects/cafe-connect/stamp_mechanism_480p.mp4';
+            homepageVideo.src = '/videos/projects/cafe-connect/cafe_connect_homepage_480p.mp4';
           }
         } else {
           // Fallback: try to detect by attempting to load different qualities
           // Start with 720p as a good middle ground
-          video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+          homepageVideo.src = '/videos/projects/cafe-connect/cafe_connect_homepage_720p.mp4';
         }
         
-        video.load();
+        homepageVideo.load();
       } catch (error) {
         // Fallback to 720p if detection fails
-        if (video) {
-          video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
-          video.load();
+        if (homepageVideo) {
+          homepageVideo.src = '/videos/projects/cafe-connect/cafe_connect_homepage_720p.mp4';
+          homepageVideo.load();
         }
       }
     };
@@ -54,15 +55,15 @@ export default function CafeConnectProject() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && video) {
+          if (entry.isIntersecting && homepageVideo) {
             // Video is in view, play it
-            video.play().catch((error) => {
+            homepageVideo.play().catch((error) => {
               // Autoplay may be blocked by browser, that's okay
               console.log('Autoplay prevented:', error);
             });
-          } else if (video) {
+          } else if (homepageVideo) {
             // Video is out of view, pause it
-            video.pause();
+            homepageVideo.pause();
           }
         });
       },
@@ -71,13 +72,76 @@ export default function CafeConnectProject() {
       }
     );
 
-    if (video) {
-      observer.observe(video);
+    if (homepageVideo) {
+      observer.observe(homepageVideo);
     }
 
     return () => {
-      if (video) {
-        observer.unobserve(video);
+      if (homepageVideo) {
+        observer.unobserve(homepageVideo);
+      }
+    };
+  }, []);
+
+  // Stamp mechanism video setup
+  useEffect(() => {
+    const stampVideo = stampVideoRef.current;
+    if (!stampVideo) return;
+
+    const selectOptimalSource = async () => {
+      try {
+        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+        
+        if (connection) {
+          const effectiveType = connection.effectiveType;
+          const downlink = connection.downlink;
+          
+          if (downlink >= 5 || effectiveType === '4g') {
+            stampVideo.src = '/videos/projects/cafe-connect/stamp_mechanism_1080p.mp4';
+          } else if (downlink >= 2.5 || effectiveType === '3g') {
+            stampVideo.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+          } else {
+            stampVideo.src = '/videos/projects/cafe-connect/stamp_mechanism_480p.mp4';
+          }
+        } else {
+          stampVideo.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+        }
+        
+        stampVideo.load();
+      } catch (error) {
+        if (stampVideo) {
+          stampVideo.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+          stampVideo.load();
+        }
+      }
+    };
+
+    selectOptimalSource();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && stampVideo) {
+            stampVideo.play().catch((error) => {
+              console.log('Autoplay prevented:', error);
+            });
+          } else if (stampVideo) {
+            stampVideo.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (stampVideo) {
+      observer.observe(stampVideo);
+    }
+
+    return () => {
+      if (stampVideo) {
+        observer.unobserve(stampVideo);
       }
     };
   }, []);
@@ -217,17 +281,17 @@ export default function CafeConnectProject() {
         </div>
       </section>
 
-      {/* NFC Stamping Demo Video */}
-      <section className="py-16 bg-white">
+      {/* Hero Video */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-center">See It In Action</h2>
             <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
-              Watch how customers use NFC technology to collect stamps in real-time at participating cafés.
+              Experience the interactive homepage with modern design and smooth animations.
             </p>
             <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
               <video 
-                ref={videoRef}
+                ref={homepageVideoRef}
                 className="w-full h-auto"
                 controls
                 preload="metadata"
@@ -235,8 +299,33 @@ export default function CafeConnectProject() {
                 loop
                 muted
               >
-                {/* Source will be set dynamically by JavaScript based on connection speed */}
-                {/* Fallback sources for browsers that don't support dynamic selection */}
+                <source src="/videos/projects/cafe-connect/cafe_connect_homepage_720p.mp4" type="video/mp4" />
+                <source src="/videos/projects/cafe-connect/cafe_connect_homepage_480p.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NFC Stamping Demo Video */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 text-center">NFC Stamp Mechanism</h2>
+            <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+              Watch how customers use NFC technology to collect stamps in real-time at participating cafés.
+            </p>
+            <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+              <video 
+                ref={stampVideoRef}
+                className="w-full h-auto"
+                controls
+                preload="metadata"
+                playsInline
+                loop
+                muted
+              >
                 <source src="/videos/projects/cafe-connect/stamp_mechanism_720p.mp4" type="video/mp4" />
                 <source src="/videos/projects/cafe-connect/stamp_mechanism_480p.mp4" type="video/mp4" />
                 <source src="/videos/projects/cafe-connect/stamp_mechanism.mp4" type="video/mp4" />

@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -14,7 +15,6 @@ import { ArrowRight,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useEffect, useRef } from 'react';
 
 export default function Home() {
   const fadeInUp = {
@@ -259,7 +259,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 items-center">
               <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-6 shadow-lg shadow-orange-500/20">
                 <Link href="/projects/cafe-connect">
-                  View Architecture <ArrowRight className="ml-2 h-4 w-4" />
+                  View Breakdown <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <div className="flex gap-3 px-2 opacity-80 hover:opacity-100 transition-opacity">

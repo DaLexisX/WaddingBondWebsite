@@ -31,7 +31,7 @@ export default function Experience() {
               <h2 className="text-3xl font-bold mb-4">Work History</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
               <p className="text-gray-600 pr-6">
-                A comprehensive timeline of my career from Senior Web Developer roles to Lead Architect positions.
+                A comprehensive timeline of my software career.
               </p>
             </div>
           </div>
