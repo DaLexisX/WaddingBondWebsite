@@ -4,22 +4,23 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* About Hero Section */}
-      <section className="bg-gray-900 text-white pt-32 pb-20">
-        <div className="container mx-auto px-6">
+      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        <div className="container mx-auto px-6 relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
-          <p className="text-xl max-w-3xl">
+          <p className="text-xl max-w-3xl text-slate-200">
             Senior Flutter & Mobile Developer with over a decade of experience delivering high-quality software solutions.
           </p>
         </div>
       </section>
 
       {/* Professional Summary Section */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 mb-8 md:mb-0">
               <h2 className="text-3xl font-bold mb-4">Professional Summary</h2>
-              <div className="w-20 h-1 bg-blue-600 mb-6"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
             </div>
             <div className="md:w-2/3">
               <p className="text-gray-700 mb-6">
@@ -42,15 +43,15 @@ export default function About() {
       </section>
 
       {/* Technical Philosophy Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-gradient-to-b from-white via-slate-50 to-slate-100">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 mb-8 md:mb-0">
               <h2 className="text-3xl font-bold mb-4">Technical Philosophy</h2>
-              <div className="w-20 h-1 bg-blue-600 mb-6"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
             </div>
             <div className="md:w-2/3">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white p-8 rounded-xl shadow-xl border border-slate-200/50">
                 <h3 className="text-xl font-bold mb-4">My Approach to Development</h3>
                 <p className="text-gray-700 mb-6">
                   I believe in creating software that solves real problems and enhances user experiences. My development 
@@ -124,16 +125,16 @@ export default function About() {
       </section>
 
       {/* Education & Certifications Section */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 mb-8 md:mb-0">
               <h2 className="text-3xl font-bold mb-4">Education & Certifications</h2>
-              <div className="w-20 h-1 bg-blue-600 mb-6"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
             </div>
             <div className="md:w-2/3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200/50 hover:shadow-xl transition-shadow duration-300">
                   <h3 className="text-xl font-bold mb-4">Education</h3>
                   <ul className="space-y-4">
                     <li>
@@ -151,7 +152,7 @@ export default function About() {
                   </ul>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200/50 hover:shadow-xl transition-shadow duration-300">
                   <h3 className="text-xl font-bold mb-4">Certifications</h3>
                   <ul className="space-y-4">
                     <li>
@@ -176,15 +177,15 @@ export default function About() {
       </section>
 
       {/* Personal Interests Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-gradient-to-b from-white via-slate-50 to-slate-100">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 mb-8 md:mb-0">
               <h2 className="text-3xl font-bold mb-4">Personal Interests</h2>
-              <div className="w-20 h-1 bg-blue-600 mb-6"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
             </div>
             <div className="md:w-2/3">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white p-8 rounded-xl shadow-xl border border-slate-200/50">
                 <p className="text-gray-700 mb-6">
                   Beyond my professional work, I'm passionate about exploring emerging technologies and continuing to expand 
                   my technical knowledge. Some of my interests include:
@@ -253,13 +254,14 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-16 relative bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4">Want to know more?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Check out my projects or get in touch to discuss how we can work together.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Check out my projects or get in touch to discuss how we can work together.</p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="/projects" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300">View Projects</a>
-            <a href="/contact" className="bg-transparent border-2 border-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition duration-300">Contact Me</a>
+            <a href="/projects" className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all duration-300 inline-block">View Projects</a>
+            <a href="/contact" className="bg-transparent border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 inline-block">Contact Me</a>
           </div>
         </div>
       </section>

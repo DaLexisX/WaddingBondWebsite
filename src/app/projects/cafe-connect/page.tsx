@@ -1,8 +1,87 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CafeConnectProject() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Adaptive bitrate selection based on connection speed
+    const selectOptimalSource = async () => {
+      try {
+        // Check connection speed if available
+        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+        
+        if (connection) {
+          const effectiveType = connection.effectiveType;
+          const downlink = connection.downlink; // Mbps
+          
+          // Select source based on connection speed
+          if (downlink >= 5 || effectiveType === '4g') {
+            // Fast connection - use 1080p
+            video.src = '/videos/projects/cafe-connect/stamp_mechanism_1080p.mp4';
+          } else if (downlink >= 2.5 || effectiveType === '3g') {
+            // Medium connection - use 720p
+            video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+          } else {
+            // Slow connection - use 480p
+            video.src = '/videos/projects/cafe-connect/stamp_mechanism_480p.mp4';
+          }
+        } else {
+          // Fallback: try to detect by attempting to load different qualities
+          // Start with 720p as a good middle ground
+          video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+        }
+        
+        video.load();
+      } catch (error) {
+        // Fallback to 720p if detection fails
+        if (video) {
+          video.src = '/videos/projects/cafe-connect/stamp_mechanism_720p.mp4';
+          video.load();
+        }
+      }
+    };
+
+    selectOptimalSource();
+
+    // Intersection Observer for autoplay when video comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && video) {
+            // Video is in view, play it
+            video.play().catch((error) => {
+              // Autoplay may be blocked by browser, that's okay
+              console.log('Autoplay prevented:', error);
+            });
+          } else if (video) {
+            // Video is out of view, pause it
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of video is visible
+      }
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -15,10 +94,17 @@ export default function CafeConnectProject() {
                 alt="CAFE:CONNECT Logo"
                 className="h-24 w-auto mb-4"
               />
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">CAFE:CONNECT</h1>
-              <p className="text-xl text-center max-w-2xl">
+              <p className="text-xl text-center max-w-2xl mb-4">
                 The digital loyalty app for independent cafés
               </p>
+              <a 
+                href="https://cafe-connect.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-orange-100 underline text-lg font-medium transition-colors"
+              >
+                Visit Website
+              </a>
             </div>
           </div>
         </div>
@@ -131,8 +217,38 @@ export default function CafeConnectProject() {
         </div>
       </section>
 
-      {/* Screenshots Gallery */}
+      {/* NFC Stamping Demo Video */}
       <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 text-center">See It In Action</h2>
+            <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+              Watch how customers use NFC technology to collect stamps in real-time at participating cafés.
+            </p>
+            <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+              <video 
+                ref={videoRef}
+                className="w-full h-auto"
+                controls
+                preload="metadata"
+                playsInline
+                loop
+                muted
+              >
+                {/* Source will be set dynamically by JavaScript based on connection speed */}
+                {/* Fallback sources for browsers that don't support dynamic selection */}
+                <source src="/videos/projects/cafe-connect/stamp_mechanism_720p.mp4" type="video/mp4" />
+                <source src="/videos/projects/cafe-connect/stamp_mechanism_480p.mp4" type="video/mp4" />
+                <source src="/videos/projects/cafe-connect/stamp_mechanism.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Screenshots Gallery */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-10">App Screenshots</h2>

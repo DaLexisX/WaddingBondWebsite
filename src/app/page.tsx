@@ -14,6 +14,7 @@ import { ArrowRight,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
   const fadeInUp = {
@@ -316,30 +317,26 @@ export default function Home() {
               {
                 title: "Mobile Development",
                 icon: "📱",
-                skills: "Flutter, Dart, iOS, Android",
-                color: "bg-blue-50 text-blue-600",
-                level: 95
+                skills: "Flutter, Dart, iOS, Android, Objective-C",
+                color: "bg-blue-50 text-blue-600"
               },
               {
                 title: "Front-End",
                 icon: "💻",
-                skills: "React, Next.js, TypeScript, Tailwind",
-                color: "bg-purple-50 text-purple-600",
-                level: 90
+                skills: "React, Next.js, TypeScript, Tailwind, Three.js",
+                color: "bg-purple-50 text-purple-600"
               },
               {
                 title: "Back-End",
                 icon: "⚙️",
-                skills: "Firebase, Node.js, .NET Core",
-                color: "bg-green-50 text-green-600",
-                level: 85
+                skills: "ASP.NET Core, Node.js, Firebase, GCP",
+                color: "bg-green-50 text-green-600"
               },
               {
                 title: "Cloud & DevOps",
                 icon: "☁️",
-                skills: "Azure, Docker, CI/CD",
-                color: "bg-orange-50 text-orange-600",
-                level: 80
+                skills: "GCP, Azure, Docker, CI/CD, GitHub Actions",
+                color: "bg-orange-50 text-orange-600"
               }
             ].map((skill, index) => (
               <motion.div
@@ -352,17 +349,7 @@ export default function Home() {
                       {skill.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-2">{skill.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm">{skill.skills}</p>
-                    <div className="w-full bg-slate-200 rounded-full h-2">
-                      <motion.div 
-                        className="h-2 rounded-full bg-current opacity-80"
-                        style={{ width: `${skill.level}%`, color: 'inherit' }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                      />
-                    </div>
+                    <p className="text-muted-foreground text-sm">{skill.skills}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -394,55 +381,28 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "DimensionalAV",
-                desc: "4D & 3D+3T Audio Visualizer",
-                tags: ["JavaScript", "Three.js", "Web Audio"],
-                link: "/projects/dimensional-av",
-                color: "bg-indigo-500"
+                title: "Karaoke Name",
+                desc: "Real-time karaoke gig management platform with queue management, song requests, and location-based discovery for singers, hosts and venues.",
+                tags: ["Next.js", "Firebase", "PWA", "Real-time"],
+                link: "/projects/karaoke-name",
+                videoBase: "karaoke_name_homepage"
               },
               {
-                title: "PeerReview",
-                desc: "Academic paper review platform",
-                tags: ["HTML", "CSS", "JavaScript"],
-                link: "/projects/peer-review",
-                color: "bg-emerald-500"
+                title: "CAFE:CONNECT",
+                desc: "Digital loyalty platform for independent cafes featuring NFC stamp integration, mobile app connectivity, and a comprehensive B2B community hub.",
+                tags: ["Next.js", "Flutter", "Firebase", "NFC"],
+                link: "/projects/cafe-connect",
+                videoBase: "cafe_connect_homepage"
               },
               {
-                title: "Code Survey",
-                desc: "LLM-powered software analysis",
-                tags: ["Python", "ML", "NLP"],
-                link: "/projects/code-survey",
-                color: "bg-rose-500"
+                title: "Est85 Coffee Works",
+                desc: "Modern coffee roastery e-commerce platform with interactive 3D elements, roast information, and online ordering capabilities.",
+                tags: ["Next.js", "Three.js", "E-commerce", "3D"],
+                link: "/projects/est85",
+                videoBase: "est85_homepage"
               }
             ].map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-              >
-                <Card className="overflow-hidden h-full border-0 shadow-lg group cursor-pointer">
-                  <div className={`h-48 ${project.color} relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                    <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl opacity-50 group-hover:scale-110 transition-transform duration-500">
-                      {project.title.substring(0, 2)}
-                    </div>
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{project.desc}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
           
@@ -476,5 +436,117 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Project Card Component with Video Support
+function ProjectCard({ project, index }: { project: any; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Adaptive bitrate selection based on connection speed
+    const selectOptimalSource = async () => {
+      try {
+        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+        
+        if (connection) {
+          const effectiveType = connection.effectiveType;
+          const downlink = connection.downlink;
+          
+          if (downlink >= 2 || effectiveType === '4g') {
+            video.src = `/videos/homepage/${project.videoBase}_high.mp4`;
+          } else if (downlink >= 1 || effectiveType === '3g') {
+            video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+          } else {
+            video.src = `/videos/homepage/${project.videoBase}_low.mp4`;
+          }
+        } else {
+          video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+        }
+        
+        video.load();
+      } catch (error) {
+        if (video) {
+          video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+          video.load();
+        }
+      }
+    };
+
+    selectOptimalSource();
+
+    // Intersection Observer for autoplay when video comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && video) {
+            video.play().catch((error) => {
+              console.log('Autoplay prevented:', error);
+            });
+          } else if (video) {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, [project.videoBase]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+    >
+      <Card className="overflow-hidden h-full border-0 shadow-lg group cursor-pointer">
+        <Link href={project.link}>
+          <div className="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            >
+              {/* Fallback sources */}
+              <source src={`/videos/homepage/${project.videoBase}_medium.mp4`} type="video/mp4" />
+              <source src={`/videos/homepage/${project.videoBase}_low.mp4`} type="video/mp4" />
+            </video>
+          </div>
+        </Link>
+        <CardContent className="p-6">
+          <Link href={project.link}>
+            <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
+          </Link>
+          <p className="text-muted-foreground mb-4 line-clamp-3">{project.desc}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag: string) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }

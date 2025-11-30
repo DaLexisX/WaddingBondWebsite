@@ -41,3 +41,7 @@ next-env.d.ts
 .firebase/
 firebase-debug.log
 firebase-debug.*.log
+
+# Large video files (source files - optimized versions are in homepage folder)
+public/videos/cafe_connect_homepage.mp4
+public/videos/karaoke_name_homepage.mp4
