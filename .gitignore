@@ -45,3 +45,10 @@ firebase-debug.*.log
 # Large video files (source files - optimized versions are in homepage folder)
 public/videos/cafe_connect_homepage.mp4
 public/videos/karaoke_name_homepage.mp4
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

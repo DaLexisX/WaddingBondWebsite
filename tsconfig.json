@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "ES2017",
     "types": [
-      "@cloudflare/workers-types/2023-07-01"
+      "@cloudflare/workers-types/2023-07-01",
+      "vitest/globals"
     ],
     "lib": [
       "dom",
@@ -36,6 +37,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "env.d.ts",
+    "vitest-env.d.ts",
     "next-env.d.ts",
     "next.config.mjs",
     "out/types/**/*.ts"
