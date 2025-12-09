@@ -3,6 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 export default function CafeConnectProject() {
   const homepageVideoRef = useRef<HTMLVideoElement>(null);
@@ -424,46 +428,45 @@ export default function CafeConnectProject() {
         </div>
       </section>
 
-      {/* Related Projects Section */}
-      <section className="py-16 bg-white">
+      {/* Other Projects Section */}
+      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-10">Other Projects</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-                <div className="h-40 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-600">Project Image</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">DimensionalAV</h3>
-                  <p className="text-gray-600 text-sm mb-3">4D & 3D+3T Audio Visualizer that responds to music in multiple dimensions.</p>
-                  <Link href="/projects/dimensional-av" className="text-blue-600 text-sm font-semibold">View Project →</Link>
-                </div>
-              </div>
-              
-              <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-                <div className="h-40 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-600">Project Image</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">PeerReview</h3>
-                  <p className="text-gray-600 text-sm mb-3">Peer Review website for A Multidimensional Temporal Universe paper.</p>
-                  <Link href="/projects/peer-review" className="text-blue-600 text-sm font-semibold">View Project →</Link>
-                </div>
-              </div>
-              
-              <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-                <div className="h-40 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-600">Project Image</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">Code Survey</h3>
-                  <p className="text-gray-600 text-sm mb-3">Understanding the evolution in large software systems with LLM.</p>
-                  <Link href="/projects/code-survey" className="text-blue-600 text-sm font-semibold">View Project →</Link>
-                </div>
-              </div>
-            </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Other Projects</h2>
+            <p className="text-muted-foreground text-lg">Selected projects from my portfolio</p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                title: "Karaoke Name",
+                desc: "Real-time karaoke gig management platform with queue management, song requests, and location-based discovery for singers, hosts and venues.",
+                tags: ["Next.js", "Firebase", "PWA", "Real-time"],
+                link: "/projects/karaoke-name",
+                videoBase: "karaoke_name_homepage"
+              },
+              {
+                title: "Est85 Coffee Works",
+                desc: "Modern coffee roastery e-commerce platform with interactive 3D elements, roast information, and online ordering capabilities.",
+                tags: ["Next.js", "Three.js", "E-commerce", "3D"],
+                link: "/projects/est85",
+                videoBase: "est85_homepage"
+              }
+            ].map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-slate-900 text-white hover:bg-slate-800">
+              <Link href="/projects">Explore All Projects</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -477,5 +480,117 @@ export default function CafeConnectProject() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Project Card Component with Video Support
+function ProjectCard({ project, index }: { project: any; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Adaptive bitrate selection based on connection speed
+    const selectOptimalSource = async () => {
+      try {
+        const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+        
+        if (connection) {
+          const effectiveType = connection.effectiveType;
+          const downlink = connection.downlink;
+          
+          if (downlink >= 2 || effectiveType === '4g') {
+            video.src = `/videos/homepage/${project.videoBase}_high.mp4`;
+          } else if (downlink >= 1 || effectiveType === '3g') {
+            video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+          } else {
+            video.src = `/videos/homepage/${project.videoBase}_low.mp4`;
+          }
+        } else {
+          video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+        }
+        
+        video.load();
+      } catch (error) {
+        if (video) {
+          video.src = `/videos/homepage/${project.videoBase}_medium.mp4`;
+          video.load();
+        }
+      }
+    };
+
+    selectOptimalSource();
+
+    // Intersection Observer for autoplay when video comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && video) {
+            video.play().catch((error) => {
+              console.log('Autoplay prevented:', error);
+            });
+          } else if (video) {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, [project.videoBase]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+    >
+      <Card className="overflow-hidden h-full border-0 shadow-lg group cursor-pointer">
+        <Link href={project.link}>
+          <div className="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            >
+              {/* Fallback sources */}
+              <source src={`/videos/homepage/${project.videoBase}_medium.mp4`} type="video/mp4" />
+              <source src={`/videos/homepage/${project.videoBase}_low.mp4`} type="video/mp4" />
+            </video>
+          </div>
+        </Link>
+        <CardContent className="p-6">
+          <Link href={project.link}>
+            <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
+          </Link>
+          <p className="text-muted-foreground mb-4 line-clamp-3">{project.desc}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag: string) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 } 

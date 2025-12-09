@@ -96,12 +96,15 @@ test('homepage shows hero and navigation', async ({ page }) => {
   await page.goto('http://localhost:3000/');
 
   // 2. Check page title
+  // /wadding|bond/i means: match "wadding" OR "bond" (case-insensitive)
+  // The | is "OR" in regex, /i makes it case-insensitive
   await expect(page).toHaveTitle(/wadding|bond/i);
 
   // 3. Find navigation and verify links
   const nav = page.getByRole('navigation');
   await expect(nav).toBeVisible();
 
+  // /home/i means: match "home" (case-insensitive - matches "Home", "HOME", "home")
   const expectedLinks = [/home/i, /projects/i, /skills/i];
   for (const link of expectedLinks) {
     await expect(nav.getByRole('link', { name: link })).toBeVisible();
@@ -111,13 +114,24 @@ test('homepage shows hero and navigation', async ({ page }) => {
 
 **What's happening:**
 1. **`page.goto(...)`** - Opens real browser, navigates to URL
-2. **`page.getByRole('navigation')`** - Finds nav element
-3. **`expect(...).toBeVisible()`** - Asserts element is visible
+2. **`page.getByRole('navigation')`** - Finds nav element by accessibility role (see "Roles" explanation below)
+3. **`expect(...).toBeVisible()`** - Asserts element is **actually visible** (not just in DOM)
+
+**Key difference from Vitest:**
+- **Vitest**: `.toBeInTheDocument()` - checks if element exists in fake DOM
+- **Playwright**: `.toBeVisible()` - checks if element is **actually visible** in real browser (not hidden by CSS, etc.)
 
 **Why test this?**
 - Verifies critical user flow (landing on homepage)
 - Ensures navigation works (users can navigate)
 - Tests across browsers (Chromium, Firefox, WebKit)
+- Tests real browser rendering (CSS, visibility, etc.)
+
+> **See `docs/testing-concepts-explained.md` for detailed explanations of:**
+> - What are "roles" in `getByRole()`?
+> - What does `/i` mean in regex?
+> - What does `|` (pipe) mean in regex?
+> - When to use Vitest vs Playwright?
 
 ---
 
@@ -245,8 +259,11 @@ pnpm exec playwright test skills
 - ✅ Testing component rendering
 - ✅ Fast feedback during development
 - ✅ Testing edge cases
+- ✅ Testing component behavior (clicks, state changes)
 
 **Example**: Testing that a button component renders correctly, or that a form validates input.
+
+**Key difference:** Uses `.toBeInTheDocument()` - checks if element exists in fake DOM
 
 ### Use Playwright (E2E) When:
 - ✅ Testing complete user flows
@@ -254,8 +271,28 @@ pnpm exec playwright test skills
 - ✅ Testing across browsers
 - ✅ Testing real user interactions
 - ✅ Testing production-like scenarios
+- ✅ Testing CSS/styling (visibility, layout)
+- ✅ Testing full app integration
 
 **Example**: Testing that a user can navigate from homepage → projects → contact and submit a form.
+
+**Key difference:** Uses `.toBeVisible()` - checks if element is **actually visible** in real browser
+
+### Critical Difference: `.toBeInTheDocument()` vs `.toBeVisible()`
+
+**Vitest:**
+```typescript
+expect(screen.getByRole('link')).toBeInTheDocument();
+// ✅ Passes if element exists in DOM (even if hidden by CSS)
+```
+
+**Playwright:**
+```typescript
+await expect(page.getByRole('link')).toBeVisible();
+// ✅ Passes only if element is actually visible (not hidden, not covered)
+```
+
+> **See `docs/testing-concepts-explained.md` for a detailed comparison and examples.**
 
 ---
 

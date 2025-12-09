@@ -5,6 +5,7 @@
 param(
     [switch]$SkipTests = $false,
     [switch]$SkipE2E = $true,  # E2E tests are slower, skip by default for faster deploys
+    [switch]$SkipLint = $false, # Allow skipping lint temporarily
     [switch]$SkipBuild = $false,  # Skip build step (useful if you already built)
     [switch]$DryRun = $false  # Run all checks but don't actually deploy
 )
@@ -51,14 +52,19 @@ if (-not $SkipE2E) {
 }
 
 # Step 3: Lint Check
-Write-Host "Step 3: Running linter..." -ForegroundColor Yellow
-pnpm lint
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "ERROR: Linting failed!" -ForegroundColor Red
-    exit 1
+if (-not $SkipLint) {
+    Write-Host "Step 3: Running linter..." -ForegroundColor Yellow
+    pnpm lint
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: Linting failed!" -ForegroundColor Red
+        exit 1
+    }
+    Write-Host "SUCCESS: Linting passed" -ForegroundColor Green
+    Write-Host ""
+} else {
+    Write-Host "Skipping linter (--SkipLint flag)" -ForegroundColor Yellow
+    Write-Host ""
 }
-Write-Host "SUCCESS: Linting passed" -ForegroundColor Green
-Write-Host ""
 
 # Step 4: Build Next.js static export
 if (-not $SkipBuild) {
@@ -120,5 +126,6 @@ Write-Host "Usage examples:" -ForegroundColor Cyan
 Write-Host "   .\deploy.ps1                    # Full deployment with tests" -ForegroundColor White
 Write-Host "   .\deploy.ps1 -SkipTests          # Skip unit/component tests" -ForegroundColor White
 Write-Host "   .\deploy.ps1 -SkipE2E:`$false      # Include E2E tests" -ForegroundColor White
+Write-Host "   .\deploy.ps1 -SkipLint            # Skip linting" -ForegroundColor White
 Write-Host "   .\deploy.ps1 -SkipBuild           # Skip build (use existing out/)" -ForegroundColor White
 Write-Host "   .\deploy.ps1 -DryRun              # Run checks but don't deploy" -ForegroundColor White

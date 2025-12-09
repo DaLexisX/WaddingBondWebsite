@@ -19,4 +19,34 @@ test('homepage shows hero and navigation', async ({ page }) => {
   }
 });
 
+test('homepage navigation links work correctly', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+
+  const nav = page.getByRole('navigation');
+
+  // Test Projects link - click and verify navigation
+  const projectsLink = nav.getByRole('link', { name: /projects/i });
+  await projectsLink.click();
+  await expect(page).toHaveURL(/\/projects/);
+  await expect(page.getByRole('heading', { name: /projects/i })).toBeVisible();
+
+  // Navigate back to homepage
+  await page.goto('/');
+  
+  // Test Skills link - click and verify navigation
+  const skillsLink = nav.getByRole('link', { name: /skills/i });
+  await skillsLink.click();
+  await expect(page).toHaveURL(/\/skills/);
+  await expect(page.getByRole('heading', { name: /my skills/i })).toBeVisible();
+
+  // Navigate back to homepage
+  await page.goto('/');
+  
+  // Test Contact link - click and verify navigation
+  const contactLink = nav.getByRole('link', { name: /contact/i });
+  await contactLink.click();
+  await expect(page).toHaveURL(/\/contact/);
+  // Contact page should load (we're just verifying navigation works)
+});
+
 
