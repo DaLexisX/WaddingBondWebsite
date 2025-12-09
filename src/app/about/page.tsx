@@ -24,12 +24,12 @@ export default function About() {
             </div>
             <div className="md:w-2/3">
               <p className="text-gray-700 mb-6">
-                I'm a versatile full-stack developer with over 10 years of experience delivering end-to-end software solutions. 
-                Recently, I've focused on Flutter development with proven success in architecting and deploying cross-platform 
+                I&apos;m a versatile full-stack developer with over 10 years of experience delivering end-to-end software solutions. 
+                Recently, I&apos;ve focused on Flutter development with proven success in architecting and deploying cross-platform 
                 mobile applications.
               </p>
               <p className="text-gray-700 mb-6">
-                I'm passionate about crafting intuitive user experiences and scalable solutions, as demonstrated by my work on 
+                I&apos;m passionate about crafting intuitive user experiences and scalable solutions, as demonstrated by my work on 
                 CAFE:CONNECT—a fully integrated app using Flutter and Firebase. I excel at bridging the gap between design and 
                 technology, bringing a strong blend of technical expertise and practical problem-solving skills to every project.
               </p>
@@ -187,7 +187,7 @@ export default function About() {
             <div className="md:w-2/3">
               <div className="bg-white p-8 rounded-xl shadow-xl border border-slate-200/50">
                 <p className="text-gray-700 mb-6">
-                  Beyond my professional work, I'm passionate about exploring emerging technologies and continuing to expand 
+                  Beyond my professional work, I&apos;m passionate about exploring emerging technologies and continuing to expand 
                   my technical knowledge. Some of my interests include:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

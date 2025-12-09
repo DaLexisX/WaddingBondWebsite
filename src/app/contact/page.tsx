@@ -136,7 +136,7 @@ export default function Contact() {
         <div className="container mx-auto px-6 relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl max-w-3xl text-slate-200">
-            I'm currently available for freelance work and new opportunities. Let's discuss how I can help with your project.
+            I&apos;m currently available for freelance work and new opportunities. Let&apos;s discuss how I can help with your project.
           </p>
         </div>
       </section>
@@ -149,7 +149,7 @@ export default function Contact() {
               <h2 className="text-3xl font-bold mb-4">Send Me a Message</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mb-6"></div>
               <p className="text-gray-600 mb-6">
-                Fill out the form and I'll get back to you as soon as possible.
+                Fill out the form and I&apos;ll get back to you as soon as possible.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -306,7 +306,7 @@ export default function Contact() {
               <div className="bg-white p-8 rounded-xl shadow-xl border border-slate-200/50">
                 <h3 className="text-xl font-bold mb-4">Looking to start a project?</h3>
                 <p className="text-gray-600 mb-6">
-                  I'm currently available for freelance work and new opportunities. If you're interested in working together, please provide some details about your project to get the conversation started.
+                  I&apos;m currently available for freelance work and new opportunities. If you&apos;re interested in working together, please provide some details about your project to get the conversation started.
                 </p>
                 <div className="space-y-6">
                   <div>
@@ -357,7 +357,7 @@ export default function Contact() {
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200/50 hover:shadow-xl transition-shadow duration-300">
                   <h3 className="text-xl font-bold mb-2">What is your typical process for working with new clients?</h3>
                   <p className="text-gray-600">
-                    I typically start with an initial consultation to understand your needs and project requirements. From there, I'll provide a proposal outlining scope, timeline, and cost. Once approved, I follow an agile development approach with regular updates and feedback sessions to ensure the final product meets your expectations.
+                    I typically start with an initial consultation to understand your needs and project requirements. From there, I&apos;ll provide a proposal outlining scope, timeline, and cost. Once approved, I follow an agile development approach with regular updates and feedback sessions to ensure the final product meets your expectations.
                   </p>
                 </div>
                 
@@ -371,7 +371,7 @@ export default function Contact() {
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200/50 hover:shadow-xl transition-shadow duration-300">
                   <h3 className="text-xl font-bold mb-2">What is your availability for new projects?</h3>
                   <p className="text-gray-600">
-                    I'm currently available for new projects and can typically begin within 1-2 weeks of finalizing project details. For ongoing work, I offer dedicated hours each week to ensure consistent progress on your project.
+                    I&apos;m currently available for new projects and can typically begin within 1-2 weeks of finalizing project details. For ongoing work, I offer dedicated hours each week to ensure consistent progress on your project.
                   </p>
                 </div>
                 
@@ -391,8 +391,8 @@ export default function Contact() {
       <section className="py-16 relative bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-4">Let's Build Something Amazing Together</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Ready to bring your ideas to life? I'm excited to hear about your project and discuss how I can help make it a reality.</p>
+          <h2 className="text-3xl font-bold mb-4">Let&apos;s Build Something Amazing Together</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Ready to bring your ideas to life? I&apos;m excited to hear about your project and discuss how I can help make it a reality.</p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="mailto:doug@wadding.bond" className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all duration-300 inline-block">Email Me</a>
             <a href="https://uk.linkedin.com/in/wadding" target="_blank" rel="noopener noreferrer" className="bg-transparent border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 inline-block">Connect on LinkedIn</a>

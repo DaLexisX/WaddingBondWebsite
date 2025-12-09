@@ -562,8 +562,8 @@ export default function Skills() {
       <section className="py-16 relative bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-4">Let's work together</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Looking for a skilled developer with expertise in Flutter and mobile development? I'm available for new opportunities and projects.</p>
+          <h2 className="text-3xl font-bold mb-4">Let&apos;s work together</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Looking for a skilled developer with expertise in Flutter and mobile development? I&apos;m available for new opportunities and projects.</p>
           <a href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all duration-300 inline-block">Get in Touch</a>
         </div>
       </section>

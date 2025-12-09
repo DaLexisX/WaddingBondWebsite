@@ -22,7 +22,7 @@ function ThankYouContent() {
         <div className="container mx-auto px-6 relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Message Sent Successfully!</h1>
           <p className="text-xl max-w-3xl text-slate-200">
-            Thank you for reaching out. I'll get back to you as soon as possible.
+            Thank you for reaching out. I&apos;ll get back to you as soon as possible.
           </p>
         </div>
       </section>
@@ -88,7 +88,7 @@ function ThankYouContent() {
       <section className="py-16 relative bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-4">What's Next?</h2>
+          <h2 className="text-3xl font-bold mb-4">What&apos;s Next?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
             I typically respond within 24-48 hours. In the meantime, feel free to explore my projects and experience.
           </p>

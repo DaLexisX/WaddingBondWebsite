@@ -131,7 +131,7 @@ export default function Projects() {
                       <div className="mb-6">
                         <h4 className="font-semibold mb-2">Project Overview:</h4>
                         <p className="text-gray-600 mb-4">
-                          CAFE:CONNECT is a comprehensive mobile application developed for ICON's flagship location, Iconic Coffee, and its network of independent cafés across the UK. This full-stack Flutter application enhances the café experience with paperless loyalty cards and detailed café discovery features.
+                          CAFE:CONNECT is a comprehensive mobile application developed for ICON&apos;s flagship location, Iconic Coffee, and its network of independent cafés across the UK. This full-stack Flutter application enhances the café experience with paperless loyalty cards and detailed café discovery features.
                         </p>
                       </div>
                       <div className="mb-6">
@@ -301,7 +301,7 @@ export default function Projects() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4">Have a project in mind?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">I'm always interested in new challenges and opportunities. Let's discuss how I can help bring your ideas to life.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">I&apos;m always interested in new challenges and opportunities. Let&apos;s discuss how I can help bring your ideas to life.</p>
           <a href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all duration-300 inline-block">Get in Touch</a>
         </div>
       </section>

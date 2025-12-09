@@ -185,13 +185,13 @@ export default function CafeConnectProject() {
             <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
             <div className="mb-10">
               <p className="text-gray-700 mb-4">
-                CAFE:CONNECT is a comprehensive mobile application developed for the Independent Cafe Owner's Network (ICON) 
+                CAFE:CONNECT is a comprehensive mobile application developed for the Independent Cafe Owner&apos;s Network (ICON) 
                 based in Worthing, Sussex, UK. This digital loyalty app helps local cafés compete with large chains 
                 by offering a unified loyalty platform that eliminates paper stamp cards while enhancing the customer experience.
               </p>
               <p className="text-gray-700 mb-4">
-                The application serves as ICON's flagship digital product, initially launched at Iconic Coffee before expanding 
-                to the network's independent cafés throughout the UK. It creates a win-win ecosystem where cafés gain customer 
+                The application serves as ICON&apos;s flagship digital product, initially launched at Iconic Coffee before expanding 
+                to the network&apos;s independent cafés throughout the UK. It creates a win-win ecosystem where cafés gain customer 
                 insights and loyalty tools, while customers enjoy a streamlined experience with digital stamp collection and café discovery.
               </p>
             </div>
@@ -240,7 +240,7 @@ export default function CafeConnectProject() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">NFC-Enabled Stamp Cards</h3>
                 <p className="text-gray-600">
-                  Digital loyalty cards with tap-to-earn functionality. Simply tap your phone to the café's NFC tag to collect stamps, complete with delightful confetti animations to celebrate your progress.
+                  Digital loyalty cards with tap-to-earn functionality. Simply tap your phone to the café&apos;s NFC tag to collect stamps, complete with delightful confetti animations to celebrate your progress.
                 </p>
               </div>
               
@@ -475,7 +475,7 @@ export default function CafeConnectProject() {
       <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Interested in a similar project?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Let's discuss how I can help bring your mobile app idea to life with Flutter development.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Let&apos;s discuss how I can help bring your mobile app idea to life with Flutter development.</p>
           <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300">Get in Touch</Link>
         </div>
       </section>

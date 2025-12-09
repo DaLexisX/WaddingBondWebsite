@@ -318,7 +318,7 @@ export default function Experience() {
         <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl font-bold mb-4">Ready to collaborate?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
-            I'm currently available for new opportunities. Let's discuss how my full-stack expertise can benefit your team.
+            I&apos;m currently available for new opportunities. Let&apos;s discuss how my full-stack expertise can benefit your team.
           </p>
           <a href="mailto:doug@wadding.bond" className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 shadow-xl hover:shadow-2xl transition-all duration-300 inline-block">
             Contact Me

@@ -166,7 +166,7 @@ export default function KaraokeNameProject() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Location-Based Gig Discovery</h3>
                 <p className="text-gray-600">
-                  Leaflet-based map showing active and upcoming gigs near the user's location. Filterable list view by date, distance, 
+                  Leaflet-based map showing active and upcoming gigs near the user&apos;s location. Filterable list view by date, distance, 
                   and host for easy gig discovery.
                 </p>
               </div>
@@ -298,7 +298,7 @@ export default function KaraokeNameProject() {
       <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Interested in a similar project?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Let's discuss how I can help bring your web application idea to life with modern technologies.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Let&apos;s discuss how I can help bring your web application idea to life with modern technologies.</p>
           <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300">Get in Touch</Link>
         </div>
       </section>

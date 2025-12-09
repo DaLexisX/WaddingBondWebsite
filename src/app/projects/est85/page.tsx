@@ -97,7 +97,7 @@ export default function Est85Project() {
             <div className="mb-10">
               <p className="text-gray-700 mb-4">
                 Est.85 Coffee Works is a modern e-commerce platform for a premium coffee roastery, featuring interactive 3D elements, 
-                roast information, and online ordering capabilities. The site showcases the roastery's offerings with sophisticated 
+                roast information, and online ordering capabilities. The site showcases the roastery&apos;s offerings with sophisticated 
                 visual design and smooth user experience.
               </p>
               <p className="text-gray-700 mb-4">
@@ -178,7 +178,7 @@ export default function Est85Project() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Roast Information</h3>
                 <p className="text-gray-600">
-                  Detailed roast profiles and information pages showcasing the roastery's offerings. Comprehensive product 
+                  Detailed roast profiles and information pages showcasing the roastery&apos;s offerings. Comprehensive product 
                   descriptions with flavor profiles and origin details.
                 </p>
               </div>
@@ -284,7 +284,7 @@ export default function Est85Project() {
       <section className="py-16 bg-gradient-to-r from-amber-800 to-amber-900 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Interested in a similar project?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Let's discuss how I can help bring your e-commerce platform to life with modern web technologies and 3D graphics.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Let&apos;s discuss how I can help bring your e-commerce platform to life with modern web technologies and 3D graphics.</p>
           <Link href="/contact" className="bg-white text-amber-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300">Get in Touch</Link>
         </div>
       </section>

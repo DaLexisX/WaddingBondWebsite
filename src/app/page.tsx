@@ -231,7 +231,7 @@ export default function Home() {
                   <li className="flex items-start gap-2">
                     <div className="w-1 h-1 rounded-full bg-green-500 mt-1.5 shrink-0" />
                     <span>
-                      <strong>Native Hardware:</strong> Frictionless NFC "tap-to-collect" protocols with automated QR code fallback.
+                      <strong>Native Hardware:</strong> Frictionless NFC &quot;tap-to-collect&quot; protocols with automated QR code fallback.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -427,10 +427,10 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">Ready to bring your ideas to life?</h2>
             <p className="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
-              I'm currently open for new opportunities and interesting projects.
+              I&apos;m currently open for new opportunities and interesting projects.
             </p>
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-full shadow-2xl">
-              <Link href="/contact">Let's Work Together</Link>
+              <Link href="/contact">Let&apos;s Work Together</Link>
             </Button>
           </motion.div>
         </div>
